@@ -1,0 +1,51 @@
+{% extends "padre.html" %}
+
+{% block title %} Inicio al Sitio Random {% endblock %}
+
+{% block header %}
+  <header style="background-color: #4CAF50; padding: 20px; text-align: center; color: white;">
+    <h1 style="margin: 0;">Floreria guiño guiño</h1>
+    <p style="margin: 5px 0;">(Open 24 hs)</p>
+  </header>
+{% endblock %}
+
+{% block main %}
+  <main style="padding: 40px; text-align: center;">
+    <h2 style="color: #4CAF50;">¿Qué ofrecemos? (Sabés que ofrecemos)</h2>
+    <p style="max-width: 600px; margin: 0 auto 30px;">
+      En nuestro sitio encontrarás una página incompleta a la que le falta agregar una pila de cosas, pero es un primer intento!.
+    </p>
+
+    <a href="#servicios" style="display: inline-block; padding: 10px 20px; background-color: #4CAF50; color: white; text-decoration: none; border-radius: 5px;">
+      Ver menos, por favor...
+    </a>
+  </main>
+{% endblock %}
+
+{% block section %}
+  <!-- Sección de servicios -->
+  <section id="servicios" style="background: white; padding: 40px 20px;">
+    <h3 style="text-align: center; color: #333;">Nuestras Habilidades</h3>
+    <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 20px;">
+      <div style="background: #e8f5e9; padding: 20px; border-radius: 10px; width: 250px;">
+        <h4 style="margin-top: 0;">Crasheos</h4>
+        <p>Errores de tipeo y lineas de codigo faltantes.</p>
+      </div>
+      <div style="background: #e3f2fd; padding: 20px; border-radius: 10px; width: 250px;">
+        <h4 style="margin-top: 0;">Errores imprevistos</h4>
+        <p>Vaya a saber donde se encuentran.</p>
+      </div>
+      <div style="background: #fff3e0; padding: 20px; border-radius: 10px; width: 250px;">
+        <h4 style="margin-top: 0;">Botones bonitos</h4>
+        <p>Que no llevan a ningun lado pero se ven bien.</p>
+      </div>
+    </div>
+  </section>
+{% endblock %}
+
+{% block footer %}
+  <!-- Pie de página -->
+  <footer style="background-color: #333; color: white; text-align: center; padding: 15px; margin-top: 40px;">
+    <p style="margin: 0;">&copy; 2025 El año en que Platense ganó un título. Algunos derechos reservados.</p>
+  </footer>
+{% endblock %}
