@@ -1,0 +1,20 @@
+{% extends 'padre.html' %}
+
+{% block content %} 
+
+<h2> Lista de Libros</h2>
+
+<ul>
+    {% for libro in libros %}
+        <li>
+         {{ libro.Titulo }}</li>
+        <a href="{% url 'detalle-libro' libro.pk %}">Ver Detalle</a>
+        <a href="{% url 'editar-libro' libro.pk %}">Editar</a>
+        <a href="{% url 'eliminar-libro' libro.pk %}">Eliminar</a>
+        </li>
+    {% empty %}
+        <li>No hay libros disponibles.</li>
+    {% endfor %}
+<ul>
+
+{% endblock %}

@@ -33,11 +33,20 @@ class Estudiante(models.Model):
     def __str__(self):
         return f"{self.nombre} {self.apellido}"
     
+# class Libro(models.Model):
+#     nombre = models.CharField(max_length=50)
+#     autor = models.CharField(max_length=50, default = "Desconocido")
+#     año = models.IntegerField()
+#     editorial = models.CharField(max_length=50)
+
+#     def __str__(self):
+#         return f"{self.nombre} {self.autor}"
+    
 class Libro(models.Model):
-    nombre = models.CharField(max_length=50)
-    autor = models.CharField(max_length=50, default = "Desconocido")
-    año = models.IntegerField()
-    editorial = models.CharField(max_length=50)
+    Titulo = models.CharField(max_length=50)
+    Autor = models.CharField(max_length=20)
+    Descripcion = models.TextField(null=True, blank=True)
 
     def __str__(self):
-        return f"{self.nombre} {self.autor}"
+        return f'{self.Titulo} {self.Autor}'
+

@@ -1,8 +1,12 @@
 from django.shortcuts import render, redirect
+from django.urls import reverse_lazy
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 
 from .models import Familiar, Curso, Estudiante, Libro
 
 from .forms import CursoForm, EstudianteForm, LibroForm
+
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 from django.http import HttpResponse
@@ -32,6 +36,7 @@ def crear_familiar(request, nombre):
         nuevo_familiar.save()
     return render(request, "mi_primer_app/crear_familiar.html", {"nombre": nombre})
 
+@login_required
 def crear_curso(request):
 
     if request.method == 'POST':
@@ -82,19 +87,49 @@ def buscar_cursos(request):
         cursos = Curso.objects.filter(nombre__icontains=nombre)
         return render(request, 'mi_primer_app/cursos.html', {'cursos': cursos, 'nombre': nombre})
     
-def crear_libro(request):
-    if request.method == 'POST':
-        form = LibroForm(request.POST)
-        if form.is_valid():
-            nuevo_libro = Libro(
-                nombre = form.cleaned_data['nombre'],
-                autor = form.cleaned_data['autor'],
-                año = form.cleaned_data['año'],
-                editorial = form.cleaned_data['editorial']
-            )
-            nuevo_libro.save()
-            return redirect('inicio')
+# def crear_libro(request):
+#     if request.method == 'POST':
+#         form = LibroForm(request.POST)
+#         if form.is_valid():
+#             nuevo_libro = Libro(
+#                 nombre = form.cleaned_data['nombre'],
+#                 autor = form.cleaned_data['autor'],
+#                 año = form.cleaned_data['año'],
+#                 editorial = form.cleaned_data['editorial']
+#             )
+#             nuevo_libro.save()
+#             return redirect('inicio')
     
-    else:
-        form= LibroForm()
-        return render(request, "mi_primer_app/crear_libro.html", {"form": form})
+#     else:
+#         form= LibroForm()
+#         return render(request, "mi_primer_app/crear_libro.html", {"form": form})
+    
+
+#Modelos basados en clases
+
+class LibroListView(ListView):
+    model = Libro
+    template_name = 'mi_primer_app/listar_libros.html'
+    context_object_name = 'libros'
+
+class LibroCreateView(CreateView):
+    model = Libro
+    form_class = LibroForm
+    template_name = 'mi_primer_app/crear_libro.html'
+    success_url = reverse_lazy('listar-libros')
+
+class LibroDetailView(DetailView):
+    model = Libro
+    template_name = 'mi_primer_app/detalle_libro.html'
+    context_object_name = 'Libro'
+
+class LibroUpdateView(UpdateView):
+    model = Libro
+    form_class = LibroForm
+    template_name = 'mi_primer_app/crear_libro.html'
+    succes_url = reverse_lazy('listar-libros')
+
+class LibroDeleteView(DeleteView):
+    model = Libro
+    template_name = 'mi_primer_app/eliminar_libro.html'
+    success_url = reverse_lazy('listar-libros')

@@ -1,4 +1,5 @@
 from django import forms
+from .models import Libro
 
 class CursoForm(forms.Form):
     nombre = forms.CharField()
@@ -17,8 +18,13 @@ class EstudianteForm(forms.Form):
         widget=forms.DateInput(attrs={'type': 'date'})
     )
 
-class LibroForm(forms.Form):
-    nombre = forms.CharField(max_length=50)
-    autor = forms.CharField(max_length=50, initial = "Desconocido")
-    año = forms.IntegerField()
-    editorial = forms.CharField(max_length=50)
+# class LibroForm(forms.Form):
+#     nombre = forms.CharField(max_length=50)
+#     autor = forms.CharField(max_length=50, initial = "Desconocido")
+#     año = forms.IntegerField()
+#     editorial = forms.CharField(max_length=50)
+
+class LibroForm(forms.ModelForm):
+    class Meta:
+        model = Libro
+        fields = ['Titulo', 'Autor', 'Descripcion']
