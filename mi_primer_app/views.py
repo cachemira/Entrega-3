@@ -89,6 +89,12 @@ def buscar_cursos(request):
         cursos = Curso.objects.filter(nombre__icontains=nombre)
         return render(request, 'mi_primer_app/cursos.html', {'cursos': cursos, 'nombre': nombre})
     
+def buscar_libros(request):
+    if request.method == 'GET':
+        Titulo = request.GET.get('Titulo', '')
+        libros = Libro.objects.filter(Titulo__icontains=Titulo)
+        return render(request, 'mi_primer_app/listar_libros.html', {'libros': libros, 'Titulo': Titulo})
+    
 def about(request):
     cursos = Curso.objects.all()
     return render(request, 'mi_primer_app/about.html', {'about': about})

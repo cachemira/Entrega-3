@@ -44,7 +44,7 @@ class Estudiante(models.Model):
     
 class Libro(models.Model):
     Titulo = models.CharField(max_length=50)
-    Autor = models.CharField(max_length=20)
+    Autor = models.CharField(max_length=50)
     Descripcion = models.TextField(null=True, blank=True)
 
     def __str__(self):

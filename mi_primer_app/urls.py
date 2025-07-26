@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .views import (saludo, saludo_con_template, crear_familiar, inicio, crear_curso, crear_estudiante, buscar_cursos, cursos, about,
+from .views import (saludo, saludo_con_template, crear_familiar, inicio, crear_curso, crear_estudiante, buscar_cursos, cursos, about, buscar_libros,
                     LibroCreateView, LibroListView, LibroDeleteView, LibroDetailView, LibroUpdateView, CursoDetailView, CursoUpdateView, CursoDeleteView)
 
 urlpatterns = [
@@ -12,6 +12,7 @@ urlpatterns = [
     path('crear-estudiante/', crear_estudiante, name='crear-estudiante'),
     path('cursos/', cursos, name='cursos'),
     path('cursos/buscar/', buscar_cursos, name='buscar-cursos'),
+    path('libros/buscar/', buscar_libros, name='buscar-libros'),
     path('about/', about, name='about'),
 
     #url con vistas basadas en clase

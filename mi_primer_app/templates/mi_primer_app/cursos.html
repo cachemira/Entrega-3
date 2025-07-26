@@ -15,14 +15,6 @@
 
 <ul>
     {% for curso in cursos %}
-        <li>{{ curso.nombre }}</li>
-    {% empty %}
-        <li>No hay cursos disponibles.</li>
-    {% endfor %}
-<ul>
-
-<ul>
-    {% for curso in cursos %}
         <li>
          {{ curso.nombre }}</li>
         <a href="{% url 'detalle-curso' curso.pk %}">Ver Detalle</a>
