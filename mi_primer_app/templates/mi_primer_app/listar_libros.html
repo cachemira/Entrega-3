@@ -2,8 +2,15 @@
 
 {% block content %} 
 
-<h2> Lista de Libros</h2>
+<h2>Buscador de Libros</h2>
 
+<form method="GET" action="{% url 'listar-libros' %}">
+    <input type="text" name="titulo" placeholder="Buscar libro..." value="{{ titulo }}">
+    <button type="submit">Buscar</button>
+</form>
+
+
+<h2> Lista de Libros</h2>
 <ul>
     {% for libro in libros %}
         <li>
@@ -16,5 +23,5 @@
         <li>No hay libros disponibles.</li>
     {% endfor %}
 <ul>
-
+<a href="{% url 'crear-libro' %}">Agregar Libro</a>
 {% endblock %}

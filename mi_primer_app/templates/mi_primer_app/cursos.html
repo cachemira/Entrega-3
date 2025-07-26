@@ -4,7 +4,7 @@
 
 {% block content%}
 
-<h2>Buscar Curso</h2>
+<h2>Buscador de Cursos</h2>
 
 <form method="GET" action="{% url 'buscar-cursos' %}">
     <input type="text" name="nombre" placeholder="Buscar curso..." value="{{ nombre }}">
@@ -24,3 +24,4 @@
 <a href="{% url 'crear-curso' %}">Agregar Curso</a>
 
 {% endblock %}
+

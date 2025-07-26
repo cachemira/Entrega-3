@@ -7,6 +7,7 @@ from .models import Familiar, Curso, Estudiante, Libro
 from .forms import CursoForm, EstudianteForm, LibroForm
 
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.
 from django.http import HttpResponse
@@ -77,6 +78,7 @@ def crear_estudiante(request):
         form = EstudianteForm()
         return render(request, 'mi_primer_app/crear_estudiante.html', {'form': form})
     
+@login_required
 def cursos(request):
     cursos = Curso.objects.all()
     return render(request, 'mi_primer_app/cursos.html', {'cursos': cursos})
@@ -86,6 +88,10 @@ def buscar_cursos(request):
         nombre = request.GET.get('nombre', '')
         cursos = Curso.objects.filter(nombre__icontains=nombre)
         return render(request, 'mi_primer_app/cursos.html', {'cursos': cursos, 'nombre': nombre})
+    
+def about(request):
+    cursos = Curso.objects.all()
+    return render(request, 'mi_primer_app/about.html', {'about': about})
     
 # def crear_libro(request):
 #     if request.method == 'POST':
@@ -107,29 +113,29 @@ def buscar_cursos(request):
 
 #Modelos basados en clases
 
-class LibroListView(ListView):
+class LibroListView(LoginRequiredMixin, ListView):
     model = Libro
     template_name = 'mi_primer_app/listar_libros.html'
     context_object_name = 'libros'
 
-class LibroCreateView(CreateView):
+class LibroCreateView(LoginRequiredMixin, CreateView):
     model = Libro
     form_class = LibroForm
     template_name = 'mi_primer_app/crear_libro.html'
     success_url = reverse_lazy('listar-libros')
 
-class LibroDetailView(DetailView):
+class LibroDetailView(LoginRequiredMixin, DetailView):
     model = Libro
     template_name = 'mi_primer_app/detalle_libro.html'
     context_object_name = 'Libro'
 
-class LibroUpdateView(UpdateView):
+class LibroUpdateView(LoginRequiredMixin, UpdateView):
     model = Libro
     form_class = LibroForm
     template_name = 'mi_primer_app/crear_libro.html'
     succes_url = reverse_lazy('listar-libros')
 
-class LibroDeleteView(DeleteView):
+class LibroDeleteView(LoginRequiredMixin, DeleteView):
     model = Libro
     template_name = 'mi_primer_app/eliminar_libro.html'
     success_url = reverse_lazy('listar-libros')
