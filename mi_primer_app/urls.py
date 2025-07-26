@@ -1,7 +1,7 @@
 from django.urls import path
 
 from .views import (saludo, saludo_con_template, crear_familiar, inicio, crear_curso, crear_estudiante, buscar_cursos, cursos, about,
-                    LibroCreateView, LibroListView, LibroDeleteView, LibroDetailView, LibroUpdateView)
+                    LibroCreateView, LibroListView, LibroDeleteView, LibroDetailView, LibroUpdateView, CursoDetailView, CursoUpdateView, CursoDeleteView)
 
 urlpatterns = [
     path('', inicio, name='inicio'),
@@ -20,6 +20,8 @@ urlpatterns = [
     path('detalle-libro/<int:pk>', LibroDetailView.as_view(), name= 'detalle-libro'),
     path('editar/<int:pk>/', LibroUpdateView.as_view(), name= 'editar-libro'),
     path('eliminar/<int:pk>/', LibroDeleteView.as_view(), name= 'eliminar-libro'),
-
+    path('detalle-curso/<int:pk>', CursoDetailView.as_view(), name= 'detalle-curso'),
+    path('editar/<int:pk>/', CursoUpdateView.as_view(), name= 'editar-curso'),
+    path('eliminar/<int:pk>/', CursoDeleteView.as_view(), name= 'eliminar-curso'),
 ]
 

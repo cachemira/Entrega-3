@@ -21,6 +21,19 @@
     {% endfor %}
 <ul>
 
+<ul>
+    {% for curso in cursos %}
+        <li>
+         {{ curso.nombre }}</li>
+        <a href="{% url 'detalle-curso' curso.pk %}">Ver Detalle</a>
+        <a href="{% url 'editar-curso' curso.pk %}">Editar</a>
+        <a href="{% url 'eliminar-curso' curso.pk %}">Eliminar</a>
+        </li>
+    {% empty %}
+        <li>No hay cursos disponibles.</li>
+    {% endfor %}
+<ul>
+
 <a href="{% url 'crear-curso' %}">Agregar Curso</a>
 
 {% endblock %}
