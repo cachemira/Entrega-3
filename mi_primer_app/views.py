@@ -139,7 +139,9 @@ class LibroUpdateView(LoginRequiredMixin, UpdateView):
     model = Libro
     form_class = LibroForm
     template_name = 'mi_primer_app/crear_libro.html'
-    succes_url = reverse_lazy('listar-libros')
+    success_url = reverse_lazy('listar-libros')
+    def get_success_url(self):
+        return reverse_lazy('listar-libros')
 
 class LibroDeleteView(LoginRequiredMixin, DeleteView):
     model = Libro
@@ -149,15 +151,16 @@ class LibroDeleteView(LoginRequiredMixin, DeleteView):
 class CursoDetailView(LoginRequiredMixin, DetailView):
     model = Curso
     template_name = 'mi_primer_app/detalle_curso.html'
-    context_object_name = 'Curso'
+    context_object_name = 'curso'
 
 class CursoUpdateView(LoginRequiredMixin, UpdateView):
     model = Curso
     form_class = CursoForm
     template_name = 'mi_primer_app/crear_curso.html'
-    succes_url = reverse_lazy('listar-cursos')
+    def get_success_url(self):
+        return reverse_lazy('cursos')
 
 class CursoDeleteView(LoginRequiredMixin, DeleteView):
     model = Curso
     template_name = 'mi_primer_app/eliminar_curso.html'
-    success_url = reverse_lazy('listar-cursos')
+    success_url = reverse_lazy('cursos')

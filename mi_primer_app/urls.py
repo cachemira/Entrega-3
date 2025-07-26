@@ -19,10 +19,10 @@ urlpatterns = [
     path('listar-libros/', LibroListView.as_view(), name= 'listar-libros'),
     path('crear-libro/', LibroCreateView.as_view(), name= 'crear-libro'),
     path('detalle-libro/<int:pk>', LibroDetailView.as_view(), name= 'detalle-libro'),
-    path('editar/<int:pk>/', LibroUpdateView.as_view(), name= 'editar-libro'),
-    path('eliminar/<int:pk>/', LibroDeleteView.as_view(), name= 'eliminar-libro'),
+    path('editar-libro/<int:pk>/', LibroUpdateView.as_view(), name= 'editar-libro'),
+    path('eliminar-libro/<int:pk>/', LibroDeleteView.as_view(), name= 'eliminar-libro'),
     path('detalle-curso/<int:pk>', CursoDetailView.as_view(), name= 'detalle-curso'),
-    path('editar/<int:pk>/', CursoUpdateView.as_view(), name= 'editar-curso'),
-    path('eliminar/<int:pk>/', CursoDeleteView.as_view(), name= 'eliminar-curso'),
+    path('editar-curso/<int:pk>/', CursoUpdateView.as_view(), name= 'editar-curso'),
+    path('eliminar-curso/<int:pk>/', CursoDeleteView.as_view(), name= 'eliminar-curso'),
 ]
 
